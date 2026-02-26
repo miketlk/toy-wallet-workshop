@@ -1,0 +1,118 @@
+Disassembly of section .text:
+
+	...
+
+1000062c <cdc_puts>:
+1000062c:	b570      	push	{r4, r5, r6, lr}
+1000062e:	b082      	sub	sp, #8
+10000630:	0006      	movs	r6, r0
+10000632:	000c      	movs	r4, r1
+10000634:	2801      	cmp	r0, #1
+10000636:	d819      	bhi.n	1000066c <cdc_puts+0x40>
+10000638:	2100      	movs	r1, #0
+1000063a:	e007      	b.n	1000064c <cdc_puts+0x20>
+1000063c:	466b      	mov	r3, sp
+1000063e:	1ddd      	adds	r5, r3, #7
+10000640:	2201      	movs	r2, #1
+10000642:	0029      	movs	r1, r5
+10000644:	0030      	movs	r0, r6
+10000646:	f003 fb8e 	bl	10003d66 <cdc_write_all>
+1000064a:	7829      	ldrb	r1, [r5, #0]
+1000064c:	7823      	ldrb	r3, [r4, #0]
+1000064e:	2b00      	cmp	r3, #0
+10000650:	d00c      	beq.n	1000066c <cdc_puts+0x40>
+10000652:	3401      	adds	r4, #1
+10000654:	466a      	mov	r2, sp
+10000656:	71d3      	strb	r3, [r2, #7]
+10000658:	2b0a      	cmp	r3, #10
+1000065a:	d1ef      	bne.n	1000063c <cdc_puts+0x10>
+1000065c:	290d      	cmp	r1, #13
+1000065e:	d0ed      	beq.n	1000063c <cdc_puts+0x10>
+10000660:	4903      	ldr	r1, [pc, #12]	@ (10000670 <cdc_puts+0x44>)
+10000662:	2201      	movs	r2, #1
+10000664:	0030      	movs	r0, r6
+10000666:	f003 fb7e 	bl	10003d66 <cdc_write_all>
+1000066a:	e7e7      	b.n	1000063c <cdc_puts+0x10>
+1000066c:	b002      	add	sp, #8
+1000066e:	bd70      	pop	{r4, r5, r6, pc}
+10000670:	1000ad30 	.word	0x1000ad30
+
+	...
+
+10000b44 <cmd_pass>:
+10000b44:	b5f0      	push	{r4, r5, r6, r7, lr}
+10000b46:	b095      	sub	sp, #84	@ 0x54
+10000b48:	2800      	cmp	r0, #0
+10000b4a:	d028      	beq.n	10000b9e <cmd_pass+0x5a>
+10000b4c:	2300      	movs	r3, #0
+10000b4e:	9313      	str	r3, [sp, #76]	@ 0x4c
+10000b50:	ab13      	add	r3, sp, #76	@ 0x4c
+10000b52:	9300      	str	r3, [sp, #0]
+10000b54:	2340      	movs	r3, #64	@ 0x40
+10000b56:	aa03      	add	r2, sp, #12
+10000b58:	f003 f81c 	bl	10003b94 <decode_hex>
+10000b5c:	1e04      	subs	r4, r0, #0
+10000b5e:	d102      	bne.n	10000b66 <cmd_pass+0x22>
+10000b60:	0020      	movs	r0, r4
+10000b62:	b015      	add	sp, #84	@ 0x54
+10000b64:	bdf0      	pop	{r4, r5, r6, r7, pc}
+10000b66:	9d13      	ldr	r5, [sp, #76]	@ 0x4c
+10000b68:	002a      	movs	r2, r5
+10000b6a:	2d41      	cmp	r5, #65	@ 0x41
+10000b6c:	d900      	bls.n	10000b70 <cmd_pass+0x2c>
+10000b6e:	2241      	movs	r2, #65	@ 0x41
+10000b70:	4e0c      	ldr	r6, [pc, #48]	@ (10000ba4 <cmd_pass+0x60>)
+10000b72:	af03      	add	r7, sp, #12
+10000b74:	0039      	movs	r1, r7
+10000b76:	0030      	movs	r0, r6
+10000b78:	f006 fa90 	bl	1000709c <__wrap___aeabi_memcpy>
+10000b7c:	2300      	movs	r3, #0
+10000b7e:	5573      	strb	r3, [r6, r5]
+10000b80:	4b09      	ldr	r3, [pc, #36]	@ (10000ba8 <cmd_pass+0x64>)
+10000b82:	601d      	str	r5, [r3, #0]
+10000b84:	2240      	movs	r2, #64	@ 0x40
+10000b86:	2100      	movs	r1, #0
+10000b88:	0038      	movs	r0, r7
+10000b8a:	f006 fa81 	bl	10007090 <__wrap_memset>
+10000b8e:	f003 f9f9 	bl	10003f84 <proto_send_ok>
+10000b92:	4a06      	ldr	r2, [pc, #24]	@ (10000bac <cmd_pass+0x68>)
+10000b94:	4906      	ldr	r1, [pc, #24]	@ (10000bb0 <cmd_pass+0x6c>)
+10000b96:	2001      	movs	r0, #1
+10000b98:	f003 f90e 	bl	10003db8 <log_line>
+10000b9c:	e7e0      	b.n	10000b60 <cmd_pass+0x1c>
+10000b9e:	2400      	movs	r4, #0
+10000ba0:	e7de      	b.n	10000b60 <cmd_pass+0x1c>
+10000ba2:	46c0      	nop			@ (mov r8, r8)
+10000ba4:	20001604 	.word	0x20001604
+10000ba8:	20001f7c 	.word	0x20001f7c
+10000bac:	1000afdc 	.word	0x1000afdc
+10000bb0:	1000af00 	.word	0x1000af00
+
+	...
+
+100039e0 <float_table_shim_on_use_helper>:
+100039e0:	b507      	push	{r0, r1, r2, lr}
+100039e2:	4660      	mov	r0, ip
+100039e4:	2800      	cmp	r0, #0
+100039e6:	d100      	bne.n	100039ea <float_table_shim_on_use_helper+0xa>
+100039e8:	be00      	bkpt	0x0000
+100039ea:	8801      	ldrh	r1, [r0, #0]
+100039ec:	0a0a      	lsrs	r2, r1, #8
+100039ee:	3002      	adds	r0, #2
+100039f0:	2adf      	cmp	r2, #223	@ 0xdf
+100039f2:	d1fa      	bne.n	100039ea <float_table_shim_on_use_helper+0xa>
+100039f4:	b2c9      	uxtb	r1, r1
+100039f6:	0882      	lsrs	r2, r0, #2
+100039f8:	d304      	bcc.n	10003a04 <float_table_shim_on_use_helper+0x24>
+100039fa:	8802      	ldrh	r2, [r0, #0]
+100039fc:	8840      	ldrh	r0, [r0, #2]
+100039fe:	0400      	lsls	r0, r0, #16
+10003a00:	4310      	orrs	r0, r2
+10003a02:	e000      	b.n	10003a06 <float_table_shim_on_use_helper+0x26>
+10003a04:	6800      	ldr	r0, [r0, #0]
+10003a06:	4a02      	ldr	r2, [pc, #8]	@ (10003a10 <float_table_shim_on_use_helper+0x30>)
+10003a08:	5050      	str	r0, [r2, r1]
+10003a0a:	9003      	str	r0, [sp, #12]
+10003a0c:	bd07      	pop	{r0, r1, r2, pc}
+10003a0e:	0000      	.short	0x0000
+10003a10:	200024b8 	.word	0x200024b8
