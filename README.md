@@ -1,12 +1,34 @@
-# Toy Wallet Workshop
+# Reconstructing Hardware Wallet Exploits
 
 This repository contains workshop materials and labs for hands-on security analysis of a toy hardware wallet running on RP2040 dev board (Raspberry Pi Pico).
 
-## Table of Contents
+## Disclaimer
 
-- [Toy Wallet Workshop](#toy-wallet-workshop)
-  - [Table of Contents](#table-of-contents)
-  - [EDUCATIONAL USE DISCLAIMER](#educational-use-disclaimer)
+<pre>
+AUTHORIZED ACTIVITY
+Participants are authorized to analyze, test, and intentionally interact with security weaknesses ONLY in the hardware, firmware, and materials provided as part of this workshop.
+
+LIMITED SCOPE
+This authorization applies solely to designated workshop exercises and equipment. Techniques discussed or demonstrated must be used only where lawful and with proper authorization.
+
+WORKSHOP EQUIPMENT
+Workshop devices are provided for hands-on experimentation. Devices may be modified, stressed, or rendered inoperable as part of the exercises.
+
+PERSONAL SYSTEM RESPONSIBILITY
+Participants are responsible for the safety, integrity, and security of their personal computers, software, operating systems, and data.
+
+ETHICAL & LAWFUL USE
+Participants agree to apply acquired knowledge responsibly, ethically, and in compliance with applicable laws.
+
+ACCEPTANCE OF TERMS
+Participation in the workshop constitutes acknowledgment and acceptance of this disclaimer.
+</pre>
+
+## Contents
+- [Reconstructing Hardware Wallet Exploits](#reconstructing-hardware-wallet-exploits)
+  - [Disclaimer](#disclaimer)
+  - [Contents](#contents)
+  - [Intro](#intro)
   - [Repository Layout](#repository-layout)
   - [Labs](#labs)
   - [Workshop Machine Setup](#workshop-machine-setup)
@@ -25,33 +47,14 @@ This repository contains workshop materials and labs for hands-on security analy
   - [UX Console (`client/ux.py`)](#ux-console-clientuxpy)
   - [Quick Troubleshooting](#quick-troubleshooting)
 
-## EDUCATIONAL USE DISCLAIMER
+## Intro
 
-**AUTHORIZED ACTIVITY**
-Participants are authorized to analyze, test, and intentionally interact with security weaknesses **only** in the hardware, firmware, and materials provided as part of this workshop.
-
-**LIMITED SCOPE**
-This authorization applies solely to designated workshop exercises and equipment.
-Techniques discussed or demonstrated must be used **only where lawful and with proper authorization**.
-
-**WORKSHOP EQUIPMENT**
-Workshop devices are provided for hands-on experimentation.
-Devices may be modified, stressed, or rendered inoperable as part of the exercises.
-
-**PERSONAL SYSTEM RESPONSIBILITY**
-Participants are responsible for the safety, integrity, and security of their **personal laptops, software, operating systems, and data**.
-
-**ETHICAL & LAWFUL USE**
-Participants agree to apply acquired knowledge responsibly, ethically, and in compliance with applicable laws.
-
-**ACCEPTANCE OF TERMS**
-Participation in the workshop constitutes acknowledgment and acceptance of this disclaimer.
+This workshop reconstructs a realistic exploit chain against intentionally vulnerable wallet firmware: a timing side-channel to recover the PIN, a buffer over-read to leak internal memory, and a stack overflow to hijack control flow (`ret2win`). Plus a bonus ROP lab for code-reuse exploitation. The goal is to understand how implementation bugs in protocol parsing and state handling become practical attacks. And also how to mitigate them with constant-time checks, strict bounds validation, and safer serialization.
 
 ## Repository Layout
 
 - `labs/`: Guided exercises and attack labs
 - `client/`: USB/client-side interaction scripts
-- `tests/`: Test helpers and verification assets
 
 ## Labs
 
