@@ -16,7 +16,7 @@ Disassembly of section .text:
 10000640:	2201      	movs	r2, #1
 10000642:	0029      	movs	r1, r5
 10000644:	0030      	movs	r0, r6
-10000646:	f003 fb8e 	bl	10003d66 <cdc_write_all>
+10000646:	f003 fbd4 	bl	10003df2 <cdc_write_all>
 1000064a:	7829      	ldrb	r1, [r5, #0]
 1000064c:	7823      	ldrb	r3, [r4, #0]
 1000064e:	2b00      	cmp	r3, #0
@@ -31,11 +31,11 @@ Disassembly of section .text:
 10000660:	4903      	ldr	r1, [pc, #12]	@ (10000670 <cdc_puts+0x44>)
 10000662:	2201      	movs	r2, #1
 10000664:	0030      	movs	r0, r6
-10000666:	f003 fb7e 	bl	10003d66 <cdc_write_all>
+10000666:	f003 fbc4 	bl	10003df2 <cdc_write_all>
 1000066a:	e7e7      	b.n	1000063c <cdc_puts+0x10>
 1000066c:	b002      	add	sp, #8
 1000066e:	bd70      	pop	{r4, r5, r6, pc}
-10000670:	1000ad30 	.word	0x1000ad30
+10000670:	1000ae10 	.word	0x1000ae10
 
 	...
 
@@ -50,7 +50,7 @@ Disassembly of section .text:
 10000b52:	9300      	str	r3, [sp, #0]
 10000b54:	2340      	movs	r3, #64	@ 0x40
 10000b56:	aa03      	add	r2, sp, #12
-10000b58:	f003 f81c 	bl	10003b94 <decode_hex>
+10000b58:	f003 f862 	bl	10003c20 <decode_hex>
 10000b5c:	1e04      	subs	r4, r0, #0
 10000b5e:	d102      	bne.n	10000b66 <cmd_pass+0x22>
 10000b60:	0020      	movs	r0, r4
@@ -65,7 +65,7 @@ Disassembly of section .text:
 10000b72:	af03      	add	r7, sp, #12
 10000b74:	0039      	movs	r1, r7
 10000b76:	0030      	movs	r0, r6
-10000b78:	f006 fa90 	bl	1000709c <__wrap___aeabi_memcpy>
+10000b78:	f006 fb02 	bl	10007180 <__wrap___aeabi_memcpy>
 10000b7c:	2300      	movs	r3, #0
 10000b7e:	5573      	strb	r3, [r6, r5]
 10000b80:	4b09      	ldr	r3, [pc, #36]	@ (10000ba8 <cmd_pass+0x64>)
@@ -73,20 +73,20 @@ Disassembly of section .text:
 10000b84:	2240      	movs	r2, #64	@ 0x40
 10000b86:	2100      	movs	r1, #0
 10000b88:	0038      	movs	r0, r7
-10000b8a:	f006 fa81 	bl	10007090 <__wrap_memset>
-10000b8e:	f003 f9f9 	bl	10003f84 <proto_send_ok>
+10000b8a:	f006 faf3 	bl	10007174 <__wrap_memset>
+10000b8e:	f003 fa3f 	bl	10004010 <proto_send_ok>
 10000b92:	4a06      	ldr	r2, [pc, #24]	@ (10000bac <cmd_pass+0x68>)
 10000b94:	4906      	ldr	r1, [pc, #24]	@ (10000bb0 <cmd_pass+0x6c>)
 10000b96:	2001      	movs	r0, #1
-10000b98:	f003 f90e 	bl	10003db8 <log_line>
+10000b98:	f003 f954 	bl	10003e44 <log_line>
 10000b9c:	e7e0      	b.n	10000b60 <cmd_pass+0x1c>
 10000b9e:	2400      	movs	r4, #0
 10000ba0:	e7de      	b.n	10000b60 <cmd_pass+0x1c>
 10000ba2:	46c0      	nop			@ (mov r8, r8)
 10000ba4:	20001604 	.word	0x20001604
 10000ba8:	20001f7c 	.word	0x20001f7c
-10000bac:	1000afdc 	.word	0x1000afdc
-10000bb0:	1000af00 	.word	0x1000af00
+10000bac:	1000b04c 	.word	0x1000b04c
+10000bb0:	1000b060 	.word	0x1000b060
 
 	...
 

@@ -2,6 +2,29 @@
 
 This repository contains workshop materials and labs for hands-on security analysis of a toy hardware wallet running on RP2040 dev board (Raspberry Pi Pico).
 
+## Table of Contents
+
+- [Toy Wallet Workshop](#toy-wallet-workshop)
+  - [Table of Contents](#table-of-contents)
+  - [EDUCATIONAL USE DISCLAIMER](#educational-use-disclaimer)
+  - [Repository Layout](#repository-layout)
+  - [Labs](#labs)
+  - [Workshop Machine Setup](#workshop-machine-setup)
+    - [macOS](#macos)
+    - [Linux (Ubuntu)](#linux-ubuntu)
+    - [Windows (Native, PowerShell)](#windows-native-powershell)
+    - [Verify Setup](#verify-setup)
+  - [Flashing Your Own RP2040 Board](#flashing-your-own-rp2040-board)
+    - [macOS](#macos-1)
+    - [Linux (Ubuntu)](#linux-ubuntu-1)
+    - [Windows (Native, PowerShell)](#windows-native-powershell-1)
+  - [Hardware Setup](#hardware-setup)
+    - [macOS](#macos-2)
+    - [Linux (Ubuntu)](#linux-ubuntu-2)
+    - [Windows (Native)](#windows-native)
+  - [UX Console (`client/ux.py`)](#ux-console-clientuxpy)
+  - [Quick Troubleshooting](#quick-troubleshooting)
+
 ## EDUCATIONAL USE DISCLAIMER
 
 **AUTHORIZED ACTIVITY**
@@ -28,6 +51,7 @@ Participation in the workshop constitutes acknowledgment and acceptance of this 
 
 - `labs/`: Guided exercises and attack labs
 - `client/`: USB/client-side interaction scripts
+- `tests/`: Test helpers and verification assets
 
 ## Labs
 
@@ -89,6 +113,39 @@ python --version
 pip list
 pytest --version
 ```
+
+## Flashing Your Own RP2040 Board
+
+Use the prebuilt workshop firmware at `bin/toy_wallet.uf2` to flash your board.
+
+1. Disconnect the RP2040 board from USB.
+2. Press and hold the **BOOTSEL** button.
+3. While holding **BOOTSEL**, plug the board into USB, then release the button.
+4. A mass-storage drive named `RPI-RP2` should appear.
+5. Copy `bin/toy_wallet.uf2` to that drive.
+6. Wait for the board to reboot automatically (the `RPI-RP2` drive will disappear).
+
+### macOS
+
+```bash
+cp bin/toy_wallet.uf2 /Volumes/RPI-RP2/
+```
+
+### Linux (Ubuntu)
+
+Copy the file to the mounted `RPI-RP2` drive using your file manager, or from terminal:
+
+```bash
+cp bin/toy_wallet.uf2 /media/$USER/RPI-RP2/
+```
+
+### Windows (Native, PowerShell)
+
+1. Open File Explorer and locate the `RPI-RP2` drive.
+2. Copy `bin/toy_wallet.uf2` from this repository onto that drive.
+3. Wait for automatic reboot.
+
+After reboot, continue with the Hardware Setup steps below to verify USB CDC interfaces.
 
 ## Hardware Setup
 
