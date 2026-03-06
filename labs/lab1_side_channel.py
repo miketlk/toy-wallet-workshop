@@ -46,6 +46,18 @@ def run_round(wallet, prefix: list[int], total_len: int, timeout_s: float):
     # - return early with (attempts, pin_digits) when unlock is detected
     # - otherwise return (attempts, None)
 
+    # attempts = []
+    # for d in range(10):
+    #     pin_digits = ...
+    #     pin_hex = ...
+    #     resp, elapsed_s = ...
+    #     attempts.append((d, elapsed_s, pin_digits))
+    #     log(f"try={pin_digits} t={elapsed_s*1000:.1f}ms status={resp.status}")
+    #     # If we hit the real PIN early, stop immediately.
+    #     if resp.ok:
+    #         return attempts, pin_digits
+    # return attempts, None
+
     raise NotImplementedError("TODO: implement run_round")
 
 
